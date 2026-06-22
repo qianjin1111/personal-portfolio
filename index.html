@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qianjin's Portfolio</title>
+<title>钱进 - Personal Portfolio</title>
 <style>
   :root {
     --bg: #0f1117;
@@ -29,9 +29,13 @@
   .header { text-align:center; padding:60px 20px 40px; background:linear-gradient(180deg,#1a1d27 0%,#0f1117 100%); border-bottom:1px solid var(--border); }
   .header h1 { font-size:36px; font-weight:800; margin-bottom:8px; background:linear-gradient(135deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .header .subtitle { color:var(--text2); font-size:16px; max-width:600px; margin:0 auto; }
-  .header .social-links { display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
-  .header .social-link { padding:8px 20px; border-radius:24px; border:1px solid var(--border); font-size:14px; font-weight:600; color:var(--text); transition:all 0.2s; }
-  .header .social-link:hover { border-color:var(--blue); background:rgba(79,143,247,0.1); text-decoration:none; }
+  .header .contact-row { display:flex; gap:20px; justify-content:center; margin-top:16px; flex-wrap:wrap; font-size:14px; color:var(--text2); }
+  .header .contact-row span { display:flex; align-items:center; gap:6px; }
+  .badge-row { display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
+  .badge { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; }
+  .social-links { display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
+  .social-link { padding:8px 20px; border-radius:24px; border:1px solid var(--border); font-size:14px; font-weight:600; color:var(--text); transition:all 0.2s; }
+  .social-link:hover { border-color:var(--blue); background:rgba(79,143,247,0.1); text-decoration:none; }
 
   /* Container */
   .container { max-width:1100px; margin:0 auto; padding:40px 20px 80px; }
@@ -45,6 +49,12 @@
   .about-card { padding:28px; border-radius:16px; border:1px solid var(--border); background:var(--card); }
   .about-card p { color:var(--text2); font-size:15px; line-height:1.8; }
   .about-card .highlight { color:var(--text); font-weight:600; }
+
+  /* Stats */
+  .stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:48px; }
+  .stat-card { padding:24px; border-radius:16px; border:1px solid var(--border); background:var(--card); text-align:center; }
+  .stat-card .stat-num { font-size:36px; font-weight:800; background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat-card .stat-label { font-size:14px; color:var(--text2); margin-top:4px; }
 
   /* Skills */
   .skill-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
@@ -74,6 +84,12 @@
   .project-card .link-btn.primary { background:rgba(79,143,247,0.15); border-color:var(--blue); color:var(--blue); }
   .project-card .link-btn.primary:hover { background:rgba(79,143,247,0.25); }
 
+  /* Empty state */
+  .empty-state { text-align:center; padding:60px 20px; border:2px dashed var(--border); border-radius:16px; }
+  .empty-state .icon { font-size:48px; margin-bottom:16px; }
+  .empty-state h3 { font-size:18px; margin-bottom:8px; }
+  .empty-state p { color:var(--text2); font-size:14px; }
+
   /* Timeline */
   .timeline { position:relative; padding-left:32px; }
   .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:2px; background:var(--border); }
@@ -81,43 +97,24 @@
   .timeline-item::before { content:''; position:absolute; left:-24px; top:6px; width:10px; height:10px; border-radius:50%; border:2px solid var(--blue); background:var(--bg); }
   .timeline-item .time { font-size:13px; color:var(--text2); margin-bottom:4px; }
   .timeline-item h4 { font-size:16px; font-weight:700; }
+  .timeline-item .company { font-size:14px; color:var(--blue); margin-bottom:4px; }
   .timeline-item p { font-size:14px; color:var(--text2); margin-top:4px; }
 
-  /* Footer */
-  .footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); color:var(--text2); font-size:13px; }
-  .footer a { color:var(--text2); }
-
-  /* Phase-style badge row */
-  .badge-row { display:flex; gap:10px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
-  .badge { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; }
-
-  /* Phase card (for project detail) */
-  .phase { margin-bottom:32px; border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--card); }
-  .phase-header { padding:16px 24px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); cursor:pointer; user-select:none; }
-  .phase-header:hover { background:rgba(255,255,255,0.02); }
-  .phase-num { width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; flex-shrink:0; }
-  .p1 { background:rgba(79,143,247,0.2); color:var(--blue); }
-  .p2 { background:rgba(60,201,142,0.2); color:var(--green); }
-  .p3 { background:rgba(247,166,79,0.2); color:var(--orange); }
-  .p4 { background:rgba(168,85,247,0.2); color:var(--purple); }
-  .p5 { background:rgba(34,211,238,0.2); color:var(--cyan); }
-  .phase-info h3 { font-size:18px; font-weight:700; }
-  .phase-info span { font-size:13px; color:var(--text2); }
-  .phase-body { padding:24px; }
-  .phase-body.collapsed { display:none; }
-  .arrow-icon { transition:transform 0.2s; font-size:12px; color:var(--text2); }
-  .phase-header.collapsed .arrow-icon { transform:rotate(-90deg); }
-
-  /* Stats */
-  .stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:48px; }
-  .stat-card { padding:24px; border-radius:16px; border:1px solid var(--border); background:var(--card); text-align:center; }
-  .stat-card .stat-num { font-size:36px; font-weight:800; background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .stat-card .stat-label { font-size:14px; color:var(--text2); margin-top:4px; }
+  /* Highlights */
+  .highlight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+  .highlight-card { padding:20px; border-radius:12px; border:1px solid var(--border); background:var(--card); }
+  .highlight-card .hl-icon { font-size:24px; margin-bottom:8px; }
+  .highlight-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .highlight-card p { font-size:13px; color:var(--text2); line-height:1.6; }
 
   /* Filter */
   .filter-bar { display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
   .filter-btn { padding:6px 16px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--text2); font-size:13px; cursor:pointer; transition:all 0.2s; font-family:inherit; }
   .filter-btn:hover, .filter-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(79,143,247,0.1); }
+
+  /* Footer */
+  .footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); color:var(--text2); font-size:13px; }
+  .footer a { color:var(--text2); }
 
   /* Responsive */
   @media (max-width:768px) {
@@ -125,6 +122,7 @@
     .project-grid { grid-template-columns:1fr; }
     .skill-grid { grid-template-columns:1fr; }
     .stats-row { grid-template-columns:repeat(2,1fr); }
+    .highlight-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -132,19 +130,24 @@
 
 <!-- Header -->
 <div class="header">
-  <h1>🚀 Qianjin's Portfolio</h1>
-  <p class="subtitle">全栈研发工程师 · 专注于移动端 & 前端技术 · 热爱开源与工程化实践</p>
+  <h1>钱进</h1>
+  <p class="subtitle">Android / HarmonyOS 高级客户端开发工程师 · 10 年移动客户端经验 · 北京</p>
+  <div class="contact-row">
+    <span>📧 qianjinchaoyue1111@163.com</span>
+    <span>📱 15210392639</span>
+    <span>🌐 <a href="https://qianjin1111.github.io/EddieResume/" target="_blank">EddieResume</a></span>
+  </div>
   <div class="badge-row">
-    <span class="badge" style="background:rgba(79,143,247,0.15);color:var(--blue);">📱 Android / KMP</span>
-    <span class="badge" style="background:rgba(60,201,142,0.15);color:var(--green);">🌐 Web / React</span>
-    <span class="badge" style="background:rgba(247,166,79,0.15);color:var(--orange);">🔧 鸿蒙 ArkTS</span>
-    <span class="badge" style="background:rgba(168,85,247,0.15);color:var(--purple);">⚡ Lynx 跨端</span>
+    <span class="badge" style="background:rgba(79,143,247,0.15);color:var(--blue);">📱 Android</span>
+    <span class="badge" style="background:rgba(168,85,247,0.15);color:var(--purple);">🔧 HarmonyOS</span>
+    <span class="badge" style="background:rgba(60,201,142,0.15);color:var(--green);">⚡ KMP 跨端</span>
+    <span class="badge" style="background:rgba(247,166,79,0.15);color:var(--orange);">🚀 AI 研发提效</span>
   </div>
   <div class="social-links">
     <a class="social-link" href="https://github.com/qianjin1111" target="_blank">💻 GitHub</a>
-    <a class="social-link" href="mailto:qianjin1111@example.com">📧 Email</a>
+    <a class="social-link" href="https://qianjin1111.github.io/EddieResume/" target="_blank">📄 Resume</a>
+    <a class="social-link" href="mailto:qianjinchaoyue1111@163.com">📧 Email</a>
     <a class="social-link" href="#projects">📂 项目作品</a>
-    <a class="social-link" href="#about">👤 关于我</a>
   </div>
 </div>
 
@@ -153,81 +156,145 @@
   <!-- Stats -->
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-num" id="projectCount">--</div>
-      <div class="stat-label">📦 项目作品</div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">📅 移动端经验年限</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="skillCount">--</div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">🏢 工作经历</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">20+</div>
       <div class="stat-label">🛠 技术栈</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="yearCount">--</div>
-      <div class="stat-label">📅 经验年限</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="commitCount">--</div>
-      <div class="stat-label">🔥 GitHub 贡献</div>
+      <div class="stat-num" id="projectCount">0</div>
+      <div class="stat-label">📦 项目作品</div>
     </div>
   </div>
 
   <!-- About -->
   <div class="section" id="about">
-    <h2 class="section-title">👤 关于我</h2>
+    <h2 class="section-title">👤 个人简介</h2>
     <div class="about-card">
       <p>
-        你好！我是 <span class="highlight">Qianjin</span>，一名偏前端 + 移动端的<span class="highlight">全栈研发工程师</span>。
+        10 年移动客户端研发经验，长期负责 <span class="highlight">Android / HarmonyOS</span> 客户端架构、性能稳定性治理、跨端工程化与多设备适配。
       </p>
       <p style="margin-top:12px;">
-        专注于 <span class="highlight">Android（Kotlin / Jetpack Compose）</span>、<span class="highlight">KMP 跨平台</span>、
-        <span class="highlight">纯血鸿蒙（ArkTS / ArkUI）</span> 以及 <span class="highlight">Web/H5（TypeScript / React）</span> 技术栈。
-        擅长从产品交互到多端页面、接口对接到发布监控的端到端交付。
+        近年作为<span class="highlight">懂车帝鸿蒙端核心开发与专项 Owner</span>，推动 HarmonyOS 版本从 0 到 1 建设、主端能力追平、API 大版本升级、AI 辅助迁移方案落地，具备复杂项目推进、跨团队协作和线上质量治理经验。
       </p>
-      <p style="margin-top:12px;">
-        热爱工程化实践，注重代码可读性、可测试性与可维护性。在 Native Crash 分析、跨端架构设计、
-        移动端性能优化等领域有深入实践。
-      </p>
+    </div>
+  </div>
+
+  <!-- Core Highlights -->
+  <div class="section" id="highlights">
+    <h2 class="section-title">✨ 核心亮点</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <div class="hl-icon">🚀</div>
+        <h4>鸿蒙 0→1 建设</h4>
+        <p>推动懂车帝 HarmonyOS 版 10 个月从 0 到 1 上架，覆盖核心业务链路并实现 85%+ 主端能力还原度。</p>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon">📱</div>
+        <h4>多设备适配</h4>
+        <p>牵头鸿蒙端多设备适配，双折叠体验评分 4.79、三折叠体验评分 4.54，闭环 85+ 条华为 IR 问题。</p>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon">⬆️</div>
+        <h4>API 大版本升级</h4>
+        <p>主导 HarmonyOS API13 → API22 大版本升级，制定独立灰度与回归节奏，升级期间主流程 0 P0/P1 线上事故。</p>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon">🤖</div>
+        <h4>A2H AI 辅助转换</h4>
+        <p>自研 Android → HarmonyOS AI 辅助转换方案，将典型页面迁移从 2-3 人日压缩到 0.8-1.2 人日，效率提升约 2.5 倍。</p>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon">⚡</div>
+        <h4>性能稳定性</h4>
+        <p>长期负责启动、卡顿、ANR、OOM、Native Crash、包体积等专项，沉淀跨 Android / HarmonyOS 的排查方法和复测口径。</p>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon">🏆</div>
+        <h4>华为生态贡献奖</h4>
+        <p>项目获得华为「鸿蒙先锋-生态贡献奖」，成为汽车垂类首批上架 App。</p>
+      </div>
     </div>
   </div>
 
   <!-- Skills -->
   <div class="section" id="skills">
-    <h2 class="section-title">🛠 技术栈</h2>
+    <h2 class="section-title">🛠 专业技能</h2>
     <div class="skill-grid">
       <div class="skill-category">
-        <h3>📱 移动端</h3>
+        <h3>📱 平台与语言</h3>
         <div class="skill-tags">
-          <span class="skill-tag tag-blue">Android</span>
+          <span class="skill-tag tag-blue">Java</span>
           <span class="skill-tag tag-blue">Kotlin</span>
-          <span class="skill-tag tag-blue">Jetpack Compose</span>
-          <span class="skill-tag tag-blue">Coroutines/Flow</span>
-          <span class="skill-tag tag-blue">MVVM/MVI</span>
+          <span class="skill-tag tag-purple">ArkTS</span>
+          <span class="skill-tag tag-blue">Android</span>
+          <span class="skill-tag tag-purple">HarmonyOS</span>
           <span class="skill-tag tag-orange">KMP</span>
-          <span class="skill-tag tag-purple">鸿蒙 ArkTS</span>
-          <span class="skill-tag tag-purple">ArkUI</span>
+          <span class="skill-tag tag-green">Compose</span>
+          <span class="skill-tag tag-green">ArkUI</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>🌐 前端 & 跨端</h3>
+        <h3>🏗️ 客户端架构</h3>
         <div class="skill-tags">
-          <span class="skill-tag tag-green">TypeScript</span>
-          <span class="skill-tag tag-green">React</span>
-          <span class="skill-tag tag-green">Vite/Webpack</span>
-          <span class="skill-tag tag-green">H5 适配</span>
-          <span class="skill-tag tag-pink">Lynx</span>
-          <span class="skill-tag tag-cyan">Hybrid(WebView)</span>
-          <span class="skill-tag tag-cyan">Tailwind CSS</span>
+          <span class="skill-tag tag-blue">MVVM</span>
+          <span class="skill-tag tag-blue">组件化/模块化</span>
+          <span class="skill-tag tag-blue">View 体系</span>
+          <span class="skill-tag tag-green">声明式 UI</span>
+          <span class="skill-tag tag-cyan">复杂列表</span>
+          <span class="skill-tag tag-cyan">跨端工程化</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3>🔧 工程化 & 工具</h3>
+        <h3>⚡ 性能稳定性</h3>
         <div class="skill-tags">
-          <span class="skill-tag tag-orange">Git/GitHub</span>
-          <span class="skill-tag tag-orange">CI/CD</span>
-          <span class="skill-tag tag-orange">Docker</span>
-          <span class="skill-tag tag-purple">Gradle</span>
-          <span class="skill-tag tag-purple">NDK/JNI</span>
-          <span class="skill-tag tag-red">Crash 分析</span>
-          <span class="skill-tag tag-red">性能优化</span>
+          <span class="skill-tag tag-red">Native Crash</span>
+          <span class="skill-tag tag-red">ANR</span>
+          <span class="skill-tag tag-red">OOM</span>
+          <span class="skill-tag tag-orange">冷启动</span>
+          <span class="skill-tag tag-orange">卡顿/掉帧</span>
+          <span class="skill-tag tag-orange">包体积</span>
+          <span class="skill-tag tag-cyan">Perfetto</span>
+          <span class="skill-tag tag-cyan">Tombstone</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>📐 多设备适配</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tag-purple">折叠屏</span>
+          <span class="skill-tag tag-purple">三折叠</span>
+          <span class="skill-tag tag-purple">PAD</span>
+          <span class="skill-tag tag-cyan">横竖屏</span>
+          <span class="skill-tag tag-cyan">断点/栅格</span>
+          <span class="skill-tag tag-cyan">响应式布局</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>🔧 工程化与发布</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tag-orange">多分支协作</span>
+          <span class="skill-tag tag-orange">MR 流程</span>
+          <span class="skill-tag tag-orange">灰度发布</span>
+          <span class="skill-tag tag-green">质量卡口</span>
+          <span class="skill-tag tag-green">IDE/SDK 升级</span>
+          <span class="skill-tag tag-green">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>🤖 AI 研发提效</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tag-pink">AI Agent</span>
+          <span class="skill-tag tag-pink">Spec-Coding</span>
+          <span class="skill-tag tag-pink">RAG 知识库</span>
+          <span class="skill-tag tag-pink">规格化编码</span>
+          <span class="skill-tag tag-pink">独立验证</span>
+          <span class="skill-tag tag-pink">失败回环</span>
         </div>
       </div>
     </div>
@@ -236,37 +303,43 @@
   <!-- Projects -->
   <div class="section" id="projects">
     <h2 class="section-title">📂 项目作品</h2>
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-filter="all">全部</button>
-      <button class="filter-btn" data-filter="android">📱 Android</button>
-      <button class="filter-btn" data-filter="web">🌐 Web</button>
-      <button class="filter-btn" data-filter="harmony">🔧 鸿蒙</button>
-      <button class="filter-btn" data-filter="tool">🛠 工具</button>
-    </div>
-    <div class="project-grid" id="projectGrid">
-      <!-- Dynamic content from projects.json -->
+    <div class="empty-state">
+      <div class="icon">🚧</div>
+      <h3>项目作品持续建设中</h3>
+      <p>后续将逐步补充个人项目与作品集，敬请期待。</p>
     </div>
   </div>
 
-  <!-- Timeline -->
-  <div class="section" id="timeline">
-    <h2 class="section-title">📅 经历</h2>
+  <!-- Work Experience -->
+  <div class="section" id="experience">
+    <h2 class="section-title">💼 工作经历</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="time">2024 - 至今</div>
-        <h4>高级移动端开发工程师</h4>
-        <p>负责 Android / KMP / 鸿蒙 多端架构设计与核心模块开发，主导 Native Crash 治理与性能优化。</p>
+        <div class="time">2021.04 — 至今</div>
+        <h4>Android 高级开发工程师</h4>
+        <div class="company">懂车帝 · 北京</div>
+        <p>负责客户端性能与稳定性优化专项，推进 HarmonyOS 版从 0 到 1 建设与主端追平，负责折叠屏/三折叠/PAD 多设备适配，主导 API13→API22 大版本升级，自研 A2H AI 辅助转换方案。</p>
       </div>
       <div class="timeline-item">
-        <div class="time">2021 - 2024</div>
-        <h4>移动端开发工程师</h4>
-        <p>Android 应用开发，参与组件化架构改造，推动 Kotlin + Jetpack Compose 技术落地。</p>
+        <div class="time">2018.09 — 2021.04</div>
+        <h4>Android 开发工程师</h4>
+        <div class="company">趣头条 · 上海</div>
+        <p>独立完成「爱走路」网赚 App 从 0 到 1 的整体搭建与上线发布，参与主 App 冷启动专项，承担包体积压缩专项（20M+ → 11M）。</p>
       </div>
       <div class="timeline-item">
-        <div class="time">2019 - 2021</div>
-        <h4>前端开发工程师</h4>
-        <p>Web/H5 开发，React + TypeScript 技术栈，移动端 H5 适配与性能优化。</p>
+        <div class="time">2015.09 — 2018.09</div>
+        <h4>Android 开发工程师</h4>
+        <div class="company">自如网 · 北京</div>
+        <p>参与自如客和管家 App 核心业务模块开发，覆盖租房、看房、签约、管家工作台等流程，参与性能优化与架构演进。</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="section" id="education">
+    <h2 class="section-title">🎓 教育背景</h2>
+    <div class="about-card">
+      <p><span class="highlight">延边大学</span> · 计算机科学与技术 · 全日制本科 · 2011 — 2015</p>
     </div>
   </div>
 
@@ -274,131 +347,53 @@
 
 <!-- Footer -->
 <div class="footer">
-  <p>© 2026 Qianjin · Built with ❤️ · <a href="https://github.com/qianjin1111/personal-portfolio">Source on GitHub</a></p>
+  <p>© 2026 钱进 · Built with ❤️ · <a href="https://github.com/qianjin1111/personal-portfolio">Source on GitHub</a></p>
 </div>
 
 <script>
-// Project data - loaded from projects.json
-const PROJECTS = [
-  {
-    id: "native-crash-analyzer",
-    title: "Native Crash 分析全链路",
-    desc: "Android Native Crash 从日志输入到修复验证的完整 CoT 分析流程，涵盖 SIGSEGV/SIGABRT/SIGILL 等崩溃类型的诊断方法论。",
-    tags: ["android", "tool"],
-    tagColors: ["tag-red", "tag-orange"],
-    links: [
-      { text: "🔗 流程图", url: "http://10.255.212.54/native-crash-flow/", primary: true },
-      { text: "📄 详情", url: "https://github.com/qianjin1111/personal-portfolio/blob/main/projects/native-crash-analyzer.md" }
-    ]
-  },
-  {
-    id: "personal-portfolio",
-    title: "Personal Portfolio",
-    desc: "个人作品集展示页面，基于纯静态 HTML/CSS/JS 构建，支持 Markdown 项目编辑 + GitHub Actions 自动发布到 GitHub Pages。",
-    tags: ["web", "tool"],
-    tagColors: ["tag-green", "tag-purple"],
-    links: [
-      { text: "🌐 在线预览", url: "https://qianjin1111.github.io/personal-portfolio/", primary: true },
-      { text: "💻 源码", url: "https://github.com/qianjin1111/personal-portfolio" }
-    ]
-  },
-  {
-    id: "harmony-app",
-    title: "鸿蒙应用开发实践",
-    desc: "基于 ArkTS + ArkUI 的纯血鸿蒙应用开发实践，涵盖声明式 UI、状态管理、Native 交互等核心模块。",
-    tags: ["harmony"],
-    tagColors: ["tag-purple"],
-    links: [
-      { text: "📄 详情", url: "https://github.com/qianjin1111/personal-portfolio/blob/main/projects/harmony-app.md" }
-    ]
-  },
-  {
-    id: "kmp-cross-platform",
-    title: "KMP 跨平台架构实践",
-    desc: "Kotlin Multiplatform 在 Android/iOS 双端的业务逻辑共享实践，包括网络层、数据持久化、状态管理的跨平台抽象。",
-    tags: ["android"],
-    tagColors: ["tag-blue", "tag-orange"],
-    links: [
-      { text: "📄 详情", url: "https://github.com/qianjin1111/personal-portfolio/blob/main/projects/kmp-cross-platform.md" }
-    ]
-  },
-  {
-    id: "web-h5-performance",
-    title: "移动端 H5 性能优化方案",
-    desc: "面向移动端 WebView 场景的 H5 性能优化实践，涵盖首屏加载、内存管理、离线缓存、骨架屏等优化策略。",
-    tags: ["web"],
-    tagColors: ["tag-green", "tag-cyan"],
-    links: [
-      { text: "📄 详情", url: "https://github.com/qianjin1111/personal-portfolio/blob/main/projects/web-h5-performance.md" }
-    ]
-  },
-  {
-    id: "ci-cd-pipeline",
-    title: "移动端 CI/CD 流水线",
-    desc: "基于 GitHub Actions + Gradle 的 Android/鸿蒙 自动化构建流水线，支持多 flavor 打包、自动化测试、Slardar 监控集成。",
-    tags: ["tool", "android"],
-    tagColors: ["tag-orange", "tag-blue"],
-    links: [
-      { text: "📄 详情", url: "https://github.com/qianjin1111/personal-portfolio/blob/main/projects/ci-cd-pipeline.md" }
-    ]
-  }
-];
+// Project data - to be populated later
+const PROJECTS = [];
 
 // Render projects
 function renderProjects(filter = 'all') {
   const grid = document.getElementById('projectGrid');
   const filtered = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.tags.includes(filter));
 
-  grid.innerHTML = filtered.map(p => `
-    <div class="project-card">
-      <div class="project-card-body">
-        <h3>${p.title}</h3>
-        <p class="desc">${p.desc}</p>
-        <div class="meta">
-          ${p.tagColors.map((tc, i) => `<span class="skill-tag ${tc}">${p.tags[i]}</span>`).join('')}
-        </div>
-        <div class="links">
-          ${p.links.map(l => `<a class="link-btn ${l.primary ? 'primary' : ''}" href="${l.url}" target="_blank">${l.text}</a>`).join('')}
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div class="icon">🚧</div>
+        <h3>项目作品持续建设中</h3>
+        <p>后续将逐步补充个人项目与作品集，敬请期待。</p>
+      </div>`;
+  } else {
+    grid.innerHTML = filtered.map(p => `
+      <div class="project-card">
+        <div class="project-card-body">
+          <h3>${p.title}</h3>
+          <p class="desc">${p.desc}</p>
+          <div class="meta">
+            ${p.tagColors.map((tc, i) => `<span class="skill-tag ${tc}">${p.tags[i]}</span>`).join('')}
+          </div>
+          <div class="links">
+            ${p.links.map(l => `<a class="link-btn ${l.primary ? 'primary' : ''}" href="${l.url}" target="_blank">${l.text}</a>`).join('')}
+          </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  }
 
   document.getElementById('projectCount').textContent = PROJECTS.length;
 }
 
 // Filter buttons
-document.getElementById('filterBar').addEventListener('click', (e) => {
+document.getElementById('filterBar')?.addEventListener('click', (e) => {
   if (e.target.classList.contains('filter-btn')) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     e.target.classList.add('active');
     renderProjects(e.target.dataset.filter);
   }
 });
-
-// Phase toggle
-document.querySelectorAll('.phase-header').forEach(h => {
-  h.addEventListener('click', () => {
-    h.classList.toggle('collapsed');
-    h.nextElementSibling.classList.toggle('collapsed');
-  });
-});
-
-// Stats
-document.getElementById('skillCount').textContent = '15+';
-document.getElementById('yearCount').textContent = '7+';
-
-// Fetch GitHub stats
-fetch('https://api.github.com/users/qianjin1111')
-  .then(r => r.json())
-  .then(data => {
-    if (data.public_repos) {
-      document.getElementById('commitCount').textContent = data.public_repos + ' repos';
-    }
-  })
-  .catch(() => {
-    document.getElementById('commitCount').textContent = '20+';
-  });
 
 // Init
 renderProjects();

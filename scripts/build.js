@@ -22,6 +22,11 @@ marked.setOptions({
 // Ensure site dir
 fs.rmSync(SITE_DIR, { recursive: true, force: true });
 fs.mkdirSync(SITE_DIR, { recursive: true });
+
+// Ensure projects dir exists
+if (!fs.existsSync(PROJECTS_DIR)) {
+  fs.mkdirSync(PROJECTS_DIR, { recursive: true });
+}
 fs.mkdirSync(path.join(SITE_DIR, 'projects'), { recursive: true });
 
 // Copy static assets
@@ -40,7 +45,7 @@ const projectTemplate = (title, contentHtml, backUrl) => `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title} - Qianjin's Portfolio</title>
+<title>${title} - 钱进 Portfolio</title>
 <style>
   :root {
     --bg: #0f1117;
@@ -93,7 +98,7 @@ const projectTemplate = (title, contentHtml, backUrl) => `<!DOCTYPE html>
 ${contentHtml}
 </div>
 <div class="footer">
-  <p>© 2026 Qianjin · <a href="${backUrl}">返回首页</a></p>
+  <p>© 2026 钱进 · <a href="${backUrl}">返回首页</a></p>
 </div>
 </body>
 </html>`;
