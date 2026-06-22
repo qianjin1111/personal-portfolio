@@ -100,14 +100,7 @@
   .timeline-item .company { font-size:14px; color:var(--blue); margin-bottom:4px; }
   .timeline-item p { font-size:14px; color:var(--text2); margin-top:4px; }
 
-  /* Highlights */
-  .highlight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
-  .highlight-card { padding:20px; border-radius:12px; border:1px solid var(--border); background:var(--card); }
-  .highlight-card .hl-icon { font-size:24px; margin-bottom:8px; }
-  .highlight-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
-  .highlight-card p { font-size:13px; color:var(--text2); line-height:1.6; }
-
-  /* Filter */
+  /* Timeline */
   .filter-bar { display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
   .filter-btn { padding:6px 16px; border-radius:20px; border:1px solid var(--border); background:transparent; color:var(--text2); font-size:13px; cursor:pointer; transition:all 0.2s; font-family:inherit; }
   .filter-btn:hover, .filter-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(79,143,247,0.1); }
@@ -122,7 +115,6 @@
     .project-grid { grid-template-columns:1fr; }
     .skill-grid { grid-template-columns:1fr; }
     .stats-row { grid-template-columns:repeat(2,1fr); }
-    .highlight-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -181,45 +173,8 @@
         10 年移动客户端研发经验，长期负责 <span class="highlight">Android / HarmonyOS</span> 客户端架构、性能稳定性治理、跨端工程化与多设备适配。
       </p>
       <p style="margin-top:12px;">
-        近年作为<span class="highlight">懂车帝鸿蒙端核心开发与专项 Owner</span>，推动 HarmonyOS 版本从 0 到 1 建设、主端能力追平、API 大版本升级、AI 辅助迁移方案落地，具备复杂项目推进、跨团队协作和线上质量治理经验。
+        近年作为<span class="highlight">鸿蒙端核心开发与专项 Owner</span>，推动 HarmonyOS 版本从 0 到 1 建设、主端能力追平、跨版本升级、AI 辅助迁移方案落地，具备复杂项目推进、跨团队协作和线上质量治理经验。
       </p>
-    </div>
-  </div>
-
-  <!-- Core Highlights -->
-  <div class="section" id="highlights">
-    <h2 class="section-title">✨ 核心亮点</h2>
-    <div class="highlight-grid">
-      <div class="highlight-card">
-        <div class="hl-icon">🚀</div>
-        <h4>鸿蒙 0→1 建设</h4>
-        <p>推动懂车帝 HarmonyOS 版 10 个月从 0 到 1 上架，覆盖核心业务链路并实现 85%+ 主端能力还原度。</p>
-      </div>
-      <div class="highlight-card">
-        <div class="hl-icon">📱</div>
-        <h4>多设备适配</h4>
-        <p>牵头鸿蒙端多设备适配，双折叠体验评分 4.79、三折叠体验评分 4.54，闭环 85+ 条华为 IR 问题。</p>
-      </div>
-      <div class="highlight-card">
-        <div class="hl-icon">⬆️</div>
-        <h4>API 大版本升级</h4>
-        <p>主导 HarmonyOS API13 → API22 大版本升级，制定独立灰度与回归节奏，升级期间主流程 0 P0/P1 线上事故。</p>
-      </div>
-      <div class="highlight-card">
-        <div class="hl-icon">🤖</div>
-        <h4>A2H AI 辅助转换</h4>
-        <p>自研 Android → HarmonyOS AI 辅助转换方案，将典型页面迁移从 2-3 人日压缩到 0.8-1.2 人日，效率提升约 2.5 倍。</p>
-      </div>
-      <div class="highlight-card">
-        <div class="hl-icon">⚡</div>
-        <h4>性能稳定性</h4>
-        <p>长期负责启动、卡顿、ANR、OOM、Native Crash、包体积等专项，沉淀跨 Android / HarmonyOS 的排查方法和复测口径。</p>
-      </div>
-      <div class="highlight-card">
-        <div class="hl-icon">🏆</div>
-        <h4>华为生态贡献奖</h4>
-        <p>项目获得华为「鸿蒙先锋-生态贡献奖」，成为汽车垂类首批上架 App。</p>
-      </div>
     </div>
   </div>
 
@@ -317,20 +272,20 @@
       <div class="timeline-item">
         <div class="time">2021.04 — 至今</div>
         <h4>Android 高级开发工程师</h4>
-        <div class="company">懂车帝 · 北京</div>
-        <p>负责客户端性能与稳定性优化专项，推进 HarmonyOS 版从 0 到 1 建设与主端追平，负责折叠屏/三折叠/PAD 多设备适配，主导 API13→API22 大版本升级，自研 A2H AI 辅助转换方案。</p>
+        <div class="company">北京</div>
+        <p>负责客户端性能与稳定性优化专项，推进 HarmonyOS 版从 0 到 1 建设与主端追平，负责折叠屏/三折叠/PAD 多设备适配，主导跨版本升级，自研 A2H AI 辅助转换方案。</p>
       </div>
       <div class="timeline-item">
         <div class="time">2018.09 — 2021.04</div>
         <h4>Android 开发工程师</h4>
-        <div class="company">趣头条 · 上海</div>
-        <p>独立完成「爱走路」网赚 App 从 0 到 1 的整体搭建与上线发布，参与主 App 冷启动专项，承担包体积压缩专项（20M+ → 11M）。</p>
+        <div class="company">上海</div>
+        <p>独立完成网赚类 App 从 0 到 1 的整体搭建与上线发布，参与主 App 冷启动专项，承担包体积压缩专项（20M+ → 11M）。</p>
       </div>
       <div class="timeline-item">
         <div class="time">2015.09 — 2018.09</div>
         <h4>Android 开发工程师</h4>
-        <div class="company">自如网 · 北京</div>
-        <p>参与自如客和管家 App 核心业务模块开发，覆盖租房、看房、签约、管家工作台等流程，参与性能优化与架构演进。</p>
+        <div class="company">北京</div>
+        <p>参与核心业务 App 开发，覆盖用户端与运营端完整业务流程，参与性能优化与架构演进。</p>
       </div>
     </div>
   </div>
